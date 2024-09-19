@@ -21,7 +21,7 @@ Use the green `Code` button around the middle top-right, choose your appropriate
 
 Alternatively, with `git`, `clone` the project to a working directory, then move into it.
 ```
-git clone https://github.com/NickGenghar/make-minecraft-portable.git
+git clone https://github.com/NickGenghar/make_minecraft_portable.git
 cd make-minecraft-portable
 ```
 Once inside the directory, run `cargo build` to start building the project. Alternatively, use `cargo run` to build and run the project soon after.
