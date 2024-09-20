@@ -98,7 +98,7 @@ fn main() {
                     println!("Function not implemented to the fullest. Instead, it will show the current installation status.");
                     mmcp.check_variable();
                 } else if buf.contains('0') {
-                    println!("Thank you for usin MMcP.");
+                    println!("Thank you for using MMcP.");
                     break;
                 } else {
                     println!("Invalid input, try again.");
