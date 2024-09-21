@@ -2,6 +2,9 @@ use std::io::{self};
 use std::process::Command;
 use std::fs::{self};
 
+mod mmcp;
+use mmcp::MMcP;
+
 const HELPER_STRING:[&str; 6] = [
     "[S] Start launcher",
     "[E] Edit instance",
@@ -10,46 +13,6 @@ const HELPER_STRING:[&str; 6] = [
     "",
     "Enter selection: "
 ];
-
-struct MMcP {
-    instance_name: String,
-    instance_dir: String,
-    minecraft: Command,
-}
-
-impl MMcP {
-    fn set_instance_name(&mut self, name:String) {
-        self.instance_name = name;
-    }
-
-    fn check_variable(&mut self) {
-        if self.instance_dir != "" {
-            self.minecraft
-                .arg(format!("--workdir={}", &self.instance_dir));
-            println!("Instance dir set: {}", self.instance_dir);
-        } else {
-            println!("No instance dir set. Using default.");
-        }
-    }
-
-    fn exec(&mut self) {
-        match self.minecraft.output() {
-            Ok(_) => {
-                if cfg!(target_os = "linux") {
-                    println!("Launcher closed. Returning to MMcP.");
-                } else if cfg!(target_os = "windows") {
-                    //The Windows version of the launcher somehow disowned the spawned
-                    //child process MMcP requires. This message here will act as a notice
-                    //until a better implementation made.
-                    println!("MMcP window will stay open while the launcher is opened. Be sure to close the launcher first before doing any other tasks.");
-                }
-            },
-            Err(e) => {
-                println!("An error occured while starting Minecraft. See error message for help:\n\n {}", e);
-            }
-        }
-    }
-}
 
 fn modify_mmcp(mmcp: &mut MMcP, buf: &mut String) {
     loop {
