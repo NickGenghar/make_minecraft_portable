@@ -68,7 +68,7 @@ fn main() {
     };
 
     loop {
-        for i in tui::HELPER_STRING {
+        for i in tui::helper_string().values() {
             println!("{}", i);
         }
 
