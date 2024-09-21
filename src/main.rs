@@ -68,8 +68,8 @@ fn main() {
     };
 
     loop {
-        for i in tui::helper_string().values() {
-            println!("{}", i);
+        for i in tui::helper_string(&mut mmcp).values() {
+            println!("{}", i.0);
         }
 
         buf.clear();
