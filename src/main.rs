@@ -5,14 +5,7 @@ use std::fs::{self};
 mod mmcp;
 use mmcp::MMcP;
 
-const HELPER_STRING:[&str; 6] = [
-    "[S] Start launcher",
-    "[E] Edit instance",
-    "",
-    "[0] Exit",
-    "",
-    "Enter selection: "
-];
+mod tui;
 
 fn modify_mmcp(mmcp: &mut MMcP, buf: &mut String) {
     loop {
@@ -75,7 +68,7 @@ fn main() {
     };
 
     loop {
-        for i in HELPER_STRING {
+        for i in tui::HELPER_STRING {
             println!("{}", i);
         }
 
