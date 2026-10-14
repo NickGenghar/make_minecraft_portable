@@ -1,6 +1,10 @@
 [package]
 name = "make_minecraft_portable"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2021"
 
 [dependencies]
+
+[profile.release]
+strip = "symbols"
+overflow-checks = true
