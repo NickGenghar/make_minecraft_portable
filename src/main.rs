@@ -65,10 +65,17 @@ fn main() {
     let mut mmcp = MMcP {
         instance_name: String::from("Vanilla"),
         instance_dir: String::from(""),
+        lifetime: 1,
         minecraft: minecraft
     };
 
     loop {
+        // We use lifetime as a way to exit the program, now that
+        // we've moved the exit functionality to the Tui struct.
+        if mmcp.lifetime == 0 {
+            break;
+        }
+
         for i in Tui::helper_string() {
             println!("{}", i.option_name);
         }
@@ -76,18 +83,7 @@ fn main() {
         buf.clear();
         match io::stdin().read_line(&mut buf) {
             Ok(_) => {
-                if buf.contains('S') || buf.contains('s') {
-                    println!("Starting launcher, please wait.");
-                    mmcp.exec();
-                } else if buf.contains('E') || buf.contains('e') {
-                    println!("Function not implemented to the fullest. Instead, it will show the current installation status.");
-                    mmcp.check_variable();
-                } else if buf.contains('0') {
-                    println!("Thank you for using MMcP.");
-                    break;
-                } else {
-                    println!("Invalid input, try again.");
-                }
+                Tui::handle_elements(&mut mmcp, &mut buf);
             },
             Err(e) => {
                 println!("No input provided (somehow?).\n{}", e);

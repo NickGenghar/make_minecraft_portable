@@ -3,6 +3,7 @@ use std::process::Command;
 pub struct MMcP {
     pub instance_name: String,
     pub instance_dir: String,
+    pub lifetime: u8,
     pub minecraft: Command,
 }
 
