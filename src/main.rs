@@ -37,7 +37,7 @@ fn main() {
     if cfg!(target_os = "windows") {
         launcher_dir = String::from("C:\\XboxGames\\Minecraft Launcher\\Content\\Minecraft.exe");
     } else if cfg!(target_os = "linux") {
-        launcher_dir = String::from("minecraft-launcher");
+       launcher_dir = String::from("/usr/bin/minecraft-launcher");
     } else {
         println!("Hello there, MMcP does not support your platform. Stay tuned for more info.");
         return;
