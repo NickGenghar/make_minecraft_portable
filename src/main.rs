@@ -69,7 +69,7 @@ fn main() {
     };
 
     loop {
-        for i in Tui::helper_string().values() {
+        for i in Tui::helper_string() {
             println!("{}", i.option_name);
         }
 

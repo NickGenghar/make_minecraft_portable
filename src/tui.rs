@@ -17,25 +17,25 @@ impl Tui {
         }
     }
 
-    pub fn helper_string() -> HashMap<String, Self> {
-        return HashMap::from([
-            ("s".to_string(), Self::new(
+    pub fn helper_string() -> Vec<Self> {
+        return vec![
+            Self::new(
                 "[S] Start launcher".to_string(),
                 "Starting launcher, please wait.".to_string(),
                 |mmcp| mmcp.exec()
-            )),
-            ("e".to_string(), Tui::new(
+            ),
+            Self::new(
                 "[E] Edit instance".to_string(),
                 "Function not implemented to the fullest. Instead, it will show the current installation status.".to_string(),
                 |mmcp| mmcp.check_variable()
-            )),
-            ("0".to_string(), Tui::new(
+            ),
+            Self::new(
                 "[0] Exit".to_string(),
                 "Thank you for using MMcP.".to_string(),
                 // empty closure, as we don't need to do anything when exiting.
                 |_mmcp| {}
-            ))
-        ]);
+            )
+        ];
     }
 }
 
