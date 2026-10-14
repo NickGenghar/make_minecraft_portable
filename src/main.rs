@@ -6,6 +6,7 @@ mod mmcp;
 use mmcp::MMcP;
 
 mod tui;
+use tui::Tui;
 
 fn modify_mmcp(mmcp: &mut MMcP, buf: &mut String) {
     loop {
@@ -68,8 +69,8 @@ fn main() {
     };
 
     loop {
-        for i in tui::helper_string(&mut mmcp).values() {
-            println!("{}", i.0);
+        for i in Tui::helper_string().values() {
+            println!("{}", i.option_name);
         }
 
         buf.clear();
